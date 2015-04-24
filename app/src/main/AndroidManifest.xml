@@ -8,14 +8,28 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".HistorialActivity"
-            android:label="@string/app_name" >
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HistorialActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".RaceActivity"
+            android:label="@string/title_activity_race" >
+        </activity>
+
+        <service
+            android:name=".GPSTracker"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>
