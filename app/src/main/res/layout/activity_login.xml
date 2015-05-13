@@ -6,7 +6,47 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.deltapps.runscore.LoginActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <EditText android:id="@+id/user"
+            android:hint="@string/user"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+        <EditText android:id="@+id/email"
+            android:hint="@string/email"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:inputType="textEmailAddress"
+            android:textSize="30sp" />
+        <EditText android:id="@+id/pass"
+            android:hint="@string/pass"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textSize="30sp" />
+        <EditText android:id="@+id/pass2"
+            android:hint="@string/pass2"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:inputType="textPassword"
+            android:textSize="30sp" />
+        <Button android:text="@string/login"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:background="#003366"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+        <Button android:text="@string/newUser"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp" />
+        </LinearLayout>
+
 
 </RelativeLayout>

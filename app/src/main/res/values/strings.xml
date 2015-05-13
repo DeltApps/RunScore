@@ -2,7 +2,15 @@
     <string name="app_name">RunScore</string>
 
     <string name="hello_world">Hello world!</string>
+
     <string name="action_settings">Settings</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_race">RaceActivity</string>
+    <string name="title_activity_login">RUNSCORE LOGIN</string>
+    <string name="title_activity_race">CARRERA</string>
+    <string name="user">Usuario</string>
+    <string name="email">Email</string>
+    <string name="pass">Contraseña</string>
+    <string name="pass2">Contraseña</string>
+    <string name="login">ENTRAR</string>
+    <string name="newUser">Registrar</string>
+
 </resources>
