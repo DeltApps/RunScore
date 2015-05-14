@@ -1,9 +1,9 @@
 package com.deltapps.runscore;
 
-/**
- * Created by Javier on 24/04/2015.
- */
 public class Race {
+
+    MyParse myparse = new MyParse();
+
     float distance = 0;
     String username = null;
     long duration = 0;
@@ -36,10 +36,6 @@ public class Race {
     float initialWind2 = 0;
     int initialHumidity2 = 0;
 
-    public void setNewRaceValues(float distance, String username){
-        this.distance = distance;
-        this.username = username;
-    }
     public void setMyRaceValues(float distance, String username, long duration, long avgPace,
                                 float avgSpeed, float maxSpeed, long initialTime,
                                 String initialWeather, float initialTemp, float initialWind,
@@ -92,13 +88,13 @@ public class Race {
     }
     public String getUsername(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return username1;
             else
                 return username2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return username1;
             else
                 return username2;
@@ -106,13 +102,13 @@ public class Race {
     }
     public long getDuration(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return duration1;
             else
                 return duration2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return duration1;
             else
                 return duration2;
@@ -120,13 +116,13 @@ public class Race {
     }
     public long getAvgPace(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return avgPace1;
             else
                 return avgPace2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return avgPace1;
             else
                 return avgPace2;
@@ -134,27 +130,27 @@ public class Race {
     }
     public float getAvgSpeed(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return avgSpeed1;
             else
                 return avgSpeed2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return avgSpeed1;
             else
                 return avgSpeed2;
         }
     }
-    public float getMaxSpeed(){
+    public float getMaxSpeed(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return maxSpeed1;
             else
                 return maxSpeed2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return maxSpeed1;
             else
                 return maxSpeed2;
@@ -162,13 +158,13 @@ public class Race {
     }
     public long getInitialTime(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialTime1;
             else
                 return initialTime2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialTime1;
             else
                 return initialTime2;
@@ -176,27 +172,27 @@ public class Race {
     }
     public String getInitialWeather(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialWeather1;
             else
                 return initialWeather2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialWeather1;
             else
                 return initialWeather2;
         }
     }
-    public int getInitialTemp(boolean myValue){
+    public float getInitialTemp(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialTemp1;
             else
                 return initialTemp2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialTemp1;
             else
                 return initialTemp2;
@@ -204,13 +200,13 @@ public class Race {
     }
     public float getInitialWind(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialWind1;
             else
                 return initialWind2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialWind1;
             else
                 return initialWind2;
@@ -218,13 +214,13 @@ public class Race {
     }
     public int getInitialHumidity(boolean myValue){
         if (myValue) {
-            if (myparse.getCurrentUser() == username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialHumidity1;
             else
                 return initialHumidity2;
         }
         else {
-            if (myparse.getCurrentUser() != username1)
+            if (myparse.getCurrentUser().equals(username1))
                 return initialHumidity1;
             else
                 return initialHumidity2;
