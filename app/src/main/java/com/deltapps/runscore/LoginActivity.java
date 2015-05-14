@@ -56,17 +56,32 @@ public class LoginActivity extends ActionBarActivity {
         EditText passEditText = (EditText) findViewById(R.id.pass);
         String user = userEditText.getText().toString();
         String pass = passEditText.getText().toString();
-        MyParse myparse = new MyParse();
-        // Comprobamos si el login es correcto (true)
-        if(myparse.logIn(user, pass)) {
-            Intent intent = new Intent(this, HistorialActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),
-                    "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MyParse myparse = new MyParse();
+                // Comprobamos si el login es correcto (true)
+                if(myparse.logIn(user, pass)) {
+                    Intent intent = new Intent(LoginActivity.this, HistorialActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).start();
+
+        Toast.makeText(getApplicationContext(),
+                "Iniciando sesión...", Toast.LENGTH_SHORT).show();
+
     }
 
     public void clickSignUp (View view) {
@@ -78,16 +93,31 @@ public class LoginActivity extends ActionBarActivity {
         String email = emailEditText.getText().toString();
         String pass = passEditText.getText().toString();
         String pass2 = pass2EditText.getText().toString();
-        MyParse myparse = new MyParse();
-        // Comprobamos si el registro es correcto (true)
-        if(myparse.signUp(user, email, pass, pass2)) {
-            Intent intent = new Intent(this, HistorialActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        else{
-            Toast.makeText(getApplicationContext(),
-                    "No se ha podido registrar", Toast.LENGTH_SHORT).show();
-        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MyParse myparse = new MyParse();
+                // Comprobamos si el registro es correcto (true)
+                if(myparse.signUp(user, email, pass, pass2)) {
+                    Intent intent = new Intent(LoginActivity.this, HistorialActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "No se ha podido registrar", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).start();
+
+        Toast.makeText(getApplicationContext(),
+                "Haciendo registro...", Toast.LENGTH_SHORT).show();
+
     }
 }
