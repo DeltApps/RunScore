@@ -12,5 +12,8 @@
     <string name="pass2">Contraseña</string>
     <string name="login">ENTRAR</string>
     <string name="newUser">Registrar</string>
+    <string name="newRace">NUEVA CARRERA</string>
+    <string name="distance">Distancia (Km)</string>
+    <string name="ok">OK</string>
 
 </resources>

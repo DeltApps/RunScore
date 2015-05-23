@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <NumberPicker
+        android:id="@+id/distancePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/okDistance"
+        android:layout_marginTop="15dp"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:text="@string/ok"/>
+
+</LinearLayout>
