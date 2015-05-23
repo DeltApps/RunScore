@@ -12,13 +12,13 @@
         android:layout_alignParentLeft="true"
         android:id="@+id/linearLayoutLeft"
         >
-        <TextView android:text="@string/velocidad" android:layout_width="wrap_content"
+        <TextView android:text="@string/speed" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
-        <TextView android:text="@string/distancia" android:layout_width="wrap_content"
+        <TextView android:text="@string/distance" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
-        <TextView android:text="@string/altitud" android:layout_width="wrap_content"
+        <TextView android:text="@string/altitude" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:textSize="20sp"/>
     </LinearLayout>
     <LinearLayout
@@ -26,10 +26,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentRight="true">
-        <TextView android:text="@string/ritmo" android:layout_width="wrap_content"
+        <TextView android:text="@string/pace" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
-        <TextView android:text="@string/ritmo_medio" android:layout_width="wrap_content"
+        <TextView android:text="@string/avgPace" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:textSize="20sp"/>
     </LinearLayout>
     <LinearLayout
@@ -44,14 +44,14 @@
             android:textSize="40sp"
             android:layout_margin="20dp"
             android:format="H:MM:SS"/>
-        <TextView android:text="@string/puntuacion" android:layout_width="wrap_content"
+        <TextView android:text="@string/score" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:textSize="30sp"/>
 
     </LinearLayout>
     <Button
         android:layout_width="256dp"
         android:layout_height="wrap_content"
-        android:text="@string/iniciar"
+        android:text="@string/start"
         android:textSize="25sp"
         android:visibility="visible"
         android:layout_alignParentBottom="true"
@@ -62,7 +62,7 @@
     <Button
         android:layout_width="256dp"
         android:layout_height="wrap_content"
-        android:text="@string/abandonar"
+        android:text="@string/abort"
         android:textSize="25sp"
         android:visibility="gone"
         android:layout_alignParentBottom="true"
@@ -73,7 +73,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/guardar"
+        android:text="@string/save"
         android:textSize="20sp"
         android:visibility="gone"
         android:layout_alignParentBottom="true"
@@ -84,7 +84,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/descartar"
+        android:text="@string/discard"
         android:textSize="20sp"
         android:visibility="gone"
         android:layout_alignParentBottom="true"

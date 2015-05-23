@@ -14,17 +14,19 @@
     <string name="login">ENTRAR</string>siempre pasa al final
     <string name="newUser">Registrar</string>
     <string name="newRace">NUEVA CARRERA</string>
-    <string name="distance">Distancia (Km)</string>
+    <string name="distance_km">Distancia (Km)</string>
     <string name="ok">OK</string>
-    <string name="distancia">Distancia</string>
-    <string name="velocidad">Velocidad</string>
-    <string name="altitud">Altitud</string>
-    <string name="ritmo">Ritmo</string>
-    <string name="ritmo_medio">Ritmo Medio</string>
-    <string name="puntuacion">Puntuación</string>
-    <string name="iniciar">Iniciar</string>
-    <string name="abandonar">Abandonar</string>
-    <string name="guardar">Guardar</string>
-    <string name="descartar">Descartar</string>
+    <string name="speed">Velocidad</string>
+    <string name="altitude">Altitud</string>
+    <string name="pace">Ritmo</string>
+    <string name="avgPace">Ritmo Medio</string>
+    <string name="score">Puntuación</string>
+    <string name="start">Iniciar</string>
+    <string name="abort">Abandonar</string>
+    <string name="save">Guardar</string>
+    <string name="discard">Descartar</string>
+    <string name="distance">Distancia</string>
+    <string name="Km">Km</string>
+    <string name="sin_rival">SR</string>
 
 </resources>
