@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:background="#ff888888"
+    android:gravity="center">
+
+    <TextView
+        android:text="@string/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginRight="5dp"/>
+
+    <TextView android:id="@+id/distance"
+        android:text="@string/nula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:text="@string/Km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:text="@string/puntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"/>
+
+    <TextView android:id="@+id/puntuacion"
+        android:text="@string/nula2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"/>
+
+    <TextView android:id="@+id/estado"
+        android:text="@string/sin_rival"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="5dp"/>
+
+
+</LinearLayout>
+

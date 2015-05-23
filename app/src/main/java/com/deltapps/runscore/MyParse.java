@@ -119,7 +119,7 @@ public class MyParse {
                         // adversario encontrado
 
                         // Establece acceso R/W restringido
-                        ParseACL acl = new ParseACL();
+                        final ParseACL acl = new ParseACL();
                         acl.setPublicWriteAccess(false);
                         acl.setPublicReadAccess(false);
                         acl.setReadAccess(ParseUser.getCurrentUser(), true);

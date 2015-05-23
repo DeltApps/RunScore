@@ -12,5 +12,11 @@
     <string name="pass2">Contraseña</string>
     <string name="login">ENTRAR</string>
     <string name="newUser">Registrar</string>
+    <string name="distance">Distancia</string>
+    <string name="nula">--</string>
+    <string name="nula2">----</string>
+    <string name="Km">Km</string>
+    <string name="puntuacion">Puntuación</string>
+    <string name="sin_rival">SR</string>
 
 </resources>
