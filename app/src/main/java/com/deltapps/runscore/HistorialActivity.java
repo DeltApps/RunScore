@@ -2,7 +2,6 @@ package com.deltapps.runscore;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +14,6 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 
 import java.util.ArrayList;
-
 
 public class HistorialActivity extends ActionBarActivity {
 
