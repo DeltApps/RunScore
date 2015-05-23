@@ -27,9 +27,7 @@ public class DetailActivity extends ActionBarActivity {
         TextView score_user1 = (TextView)findViewById(R.id.score_user1);
         TextView score_user2 = (TextView)findViewById(R.id.score_user2);
 
-        int position = getIntent().getIntExtra("position", 0);
-
-        Race race = HistorialActivity.racesList.get(position);
+        Race race = RaceHolder.getInstance().getRace();
         Calendar c = Calendar.getInstance();
 
         user1.setText(race.getUsername(true));
