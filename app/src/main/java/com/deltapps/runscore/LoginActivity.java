@@ -54,8 +54,8 @@ public class LoginActivity extends ActionBarActivity {
     public void clickLogin (View view) {
         EditText userEditText = (EditText) findViewById(R.id.user);
         EditText passEditText = (EditText) findViewById(R.id.pass);
-        String user = userEditText.getText().toString();
-        String pass = passEditText.getText().toString();
+        final String user = userEditText.getText().toString();
+        final String pass = passEditText.getText().toString();
 
         new Thread(new Runnable() {
             @Override
@@ -89,10 +89,10 @@ public class LoginActivity extends ActionBarActivity {
         EditText emailEditText = (EditText) findViewById(R.id.emailS);
         EditText passEditText = (EditText) findViewById(R.id.passS);
         EditText pass2EditText = (EditText) findViewById(R.id.passS2);
-        String user = userEditText.getText().toString();
-        String email = emailEditText.getText().toString();
-        String pass = passEditText.getText().toString();
-        String pass2 = pass2EditText.getText().toString();
+        final String user = userEditText.getText().toString();
+        final String email = emailEditText.getText().toString();
+        final String pass = passEditText.getText().toString();
+        final String pass2 = pass2EditText.getText().toString();
 
         new Thread(new Runnable() {
             @Override
