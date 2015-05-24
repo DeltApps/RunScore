@@ -116,6 +116,7 @@ public class MyParse {
         // y sin adversario
         ParseQuery<ParseObject> query = ParseQuery.getQuery("race");
         query.whereEqualTo("distance", race.getDistance());
+        query.whereNotEqualTo("username1", getCurrentUser());
         query.whereEqualTo("username2", "");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
