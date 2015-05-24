@@ -152,9 +152,9 @@ public class RaceActivity extends ActionBarActivity
                         runOnUiThread(new Runnable(){
                             public void run(){
                                 if(countDown==2)
-                                    Toast.makeText(RaceActivity.this, "READY?", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RaceActivity.this, "¿PREPARADO?", Toast.LENGTH_SHORT).show();
                                 else
-                                    Toast.makeText(RaceActivity.this, "SET", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RaceActivity.this, "LISTO", Toast.LENGTH_SHORT).show();
                             }
                         });
                         try{
@@ -165,7 +165,7 @@ public class RaceActivity extends ActionBarActivity
                     runOnUiThread(new Runnable(){
                         public void run(){
                             setRaceStatus(GPSTracker.START_REQUESTED);
-                            Toast.makeText(RaceActivity.this, "GO!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RaceActivity.this, "¡YA!", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -238,7 +238,7 @@ public class RaceActivity extends ActionBarActivity
     /* Imprime los valores obtenidos del GPS por pantalla */
     private void printRaceValues() {
         speedTexvView.setText("Vel: "+round(speed,1)+" km/h");
-        if (pace > HOUR){
+        if (pace > HOUR/4){
             paceTextView.setText("Ritmo: - min/km");
         }else {
             cal = Calendar.getInstance();
@@ -247,7 +247,7 @@ public class RaceActivity extends ActionBarActivity
                     + ":" + lessThanTen(cal.get(Calendar.SECOND)) + " min/km");
         }
         distanceTextView.setText("Dist: "+round(distance,1)+" km");
-        if (avgPace > HOUR){
+        if (avgPace > HOUR/4){
             avgPaceTextView.setText("/Ritmo: - min/km");
         }else{
             cal = Calendar.getInstance();

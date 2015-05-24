@@ -240,11 +240,11 @@ public class MyParse {
                         race.setRaceValues((int)races.get(i).get("distance"),
                                 (String)races.get(i).get("username1"), (long)races.get(i).get("duration1"),
                                 (long)races.get(i).get("avgPace1"), (long)races.get(i).get("initialTime1"),
-                                (String)races.get(i).get("initialWeather1"), (float)races.get(i).get("initialTemp1"),
+                                (String)races.get(i).get("initialWeather1"), (int)races.get(i).get("initialTemp1"),
                                 (int)races.get(i).get("initialHumidity1"), (int)races.get(i).get("score1"),
                                 (String)races.get(i).get("username2"), (long)races.get(i).get("duration2"),
                                 (long)races.get(i).get("avgPace2"), (long)races.get(i).get("initialTime2"),
-                                (String)races.get(i).get("initialWeather2"), (float)races.get(i).get("initialTemp2"),
+                                (String)races.get(i).get("initialWeather2"), (int)races.get(i).get("initialTemp2"),
                                 (int)races.get(i).get("initialHumidity2"),(int)races.get(i).get("score2"));
                         racesList.add(race);
                     }

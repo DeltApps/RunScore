@@ -215,7 +215,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                     distance = distance + distanceInt;
                     cal = Calendar.getInstance();
                     if(raceBeganAt!=0 && distance!=0)
-                        avgPace = (long) ((cal.getTimeInMillis()-raceBeganAt)/distance);
+                        avgPace = (long) ((cal.getTimeInMillis()-raceBeganAt)/(distance/1000));
                     altitude = altitude + altitudeInt;
                     score.setIntervalValues(altitudeInt, speed);
                     intervalScore = score.getIntervalScore();
