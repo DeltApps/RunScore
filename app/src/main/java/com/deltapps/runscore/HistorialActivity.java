@@ -108,7 +108,7 @@ public class HistorialActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HistorialActivity.this, RaceActivity.class);
-                i.putExtra("raceDistance", distancePicker.getValue());
+                i.putExtra("raceDistance", (float)distancePicker.getValue());
                 startActivity(i);
                 d.dismiss();
             }

@@ -99,7 +99,8 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        raceDistance = intent.getIntExtra("raceDistance", 5)*1000;
+        raceDistance = intent.getFloatExtra("raceDistance", 5)*1000;
+        Toast.makeText(getApplicationContext(), raceDistance+" ", Toast.LENGTH_SHORT).show();
 
         // Inicializa los objetos para leer y escribir datos en GPSPrefs
         gpsPrefs = getSharedPreferences("GPSPrefs", MODE_MULTI_PROCESS);

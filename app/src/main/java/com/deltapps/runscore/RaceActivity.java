@@ -46,7 +46,6 @@ public class RaceActivity extends ActionBarActivity
     private long avgPace;
     private double altitude;
     private long duration;
-    private int GPSstatus;
     private int score;
 
     private boolean savingRace = false;
@@ -78,7 +77,6 @@ public class RaceActivity extends ActionBarActivity
         // Comprueba si hay una carrera en marcha o no
         if(GPSPrefs.getInt("raceStatus", GPSTracker.START_RACE_NOT_AVAILABLE)!=GPSTracker.RACE_ON){
             // Si no la hay, resetea valores e inicia el servicio si no esta activo
-            GPSstatus = GPSPrefs.getInt("GPSstatus", GPSTracker.GPS_OFF);
             editor.putFloat("speed", 0);
             editor.putLong("pace", 0);
             editor.putFloat("distance", 0);
@@ -88,11 +86,14 @@ public class RaceActivity extends ActionBarActivity
             editor.putString("altitudeInt", "0");
             editor.putInt("score", 0);
             editor.commit();
-            if(GPSPrefs.getInt("GPSTrackerStatus", GPSTracker.GPS_TRACKER_OFF)==GPSTracker.GPS_TRACKER_OFF)
-                startService(new Intent(this, GPSTracker.class));
+            if(GPSPrefs.getInt("GPSTrackerStatus", GPSTracker.GPS_TRACKER_OFF)==GPSTracker.GPS_TRACKER_OFF) {
+                Intent i = new Intent(this, GPSTracker.class);
+                i.putExtra("raceDistance", getIntent().getFloatExtra("raceDistance",5));
+                startService(i);
+
+            }
         }else{
             // Si la hay, recoge los ultimos valores de la carrera y los muestra por pantalla
-            GPSstatus = GPSPrefs.getInt("GPSstatus", GPSTracker.GPS_OFF);
             speed = GPSPrefs.getFloat("speed", 0);
             pace = GPSPrefs.getLong("pace", 0);
             distance = GPSPrefs.getFloat("distance", 0);
@@ -115,7 +116,6 @@ public class RaceActivity extends ActionBarActivity
 
         if(raceStatus == GPSTracker.RACE_ON) {
             // Recoge los ultimos valores de la carrera y los muestra por pantalla
-            GPSstatus = GPSPrefs.getInt("GPSstatus", GPSTracker.GPS_OFF);
             speed = GPSPrefs.getFloat("speed", 0);
             pace = GPSPrefs.getLong("pace", 0);
             distance = GPSPrefs.getFloat("distance", 0);
@@ -131,7 +131,6 @@ public class RaceActivity extends ActionBarActivity
             chrono.stop();
             duration = GPSPrefs.getLong("duration", 0);
             chrono.setText(millisToChrono(duration));
-            GPSstatus = GPSPrefs.getInt("GPSstatus", GPSTracker.GPS_OFF);
             speed = GPSPrefs.getFloat("speed", 0);
             pace = GPSPrefs.getLong("pace", 0);
             distance = GPSPrefs.getFloat("distance", 0);
