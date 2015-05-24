@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -18,6 +19,7 @@ public class DetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        TextView distance = (TextView)findViewById(R.id.distancia_total);
         TextView user1 = (TextView)findViewById(R.id.user1);
         TextView user2 = (TextView)findViewById(R.id.user2);
         TextView time1 = (TextView)findViewById(R.id.time_user1);
@@ -28,20 +30,20 @@ public class DetailActivity extends ActionBarActivity {
         TextView score_user2 = (TextView)findViewById(R.id.score_user2);
 
         Race race = RaceHolder.getInstance().getRace();
-        Calendar c = Calendar.getInstance();
+
+        distance.setText(race.getDistance()+" km");
 
         user1.setText(race.getUsername(true));
-        user2.setText(race.getUsername(false));
-
         time1.setText(millisToChrono(race.getDuration(true)));
+        average_rate_user1.setText(String.valueOf(race.getAvgPace(true))+" min/km");
+        score_user1.setText(String.valueOf(race.getScore(true))+" puntos");
 
-        time2.setText(millisToChrono(race.getDuration(false)));
-
-        average_rate_user1.setText(String.valueOf(race.getAvgPace(true)));
-        average_rate_user2.setText(String.valueOf(race.getAvgPace(false)));
-
-        score_user1.setText(String.valueOf(race.getScore(true)));
-        score_user2.setText(String.valueOf(race.getScore(false)));
+        if(!race.getUsername(false).isEmpty()) {
+            user2.setText(race.getUsername(false));
+            time2.setText(millisToChrono(race.getDuration(false)));
+            average_rate_user2.setText(String.valueOf(race.getAvgPace(false))+" min/km");
+            score_user2.setText(String.valueOf(race.getScore(false))+" puntos");
+        }
 
     }
 
@@ -68,9 +70,9 @@ public class DetailActivity extends ActionBarActivity {
     }
 
     private String millisToChrono(long duration){
-        long seconds = (duration/1000)%60;
-        long minutes = (seconds/60)%60;
-        long hours = (minutes/60)%24;
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        long hours = TimeUnit.MILLISECONDS.toHours(duration);
 
         return lessThanTen(hours)+":"+lessThanTen(minutes)+":"+lessThanTen(seconds);
     }

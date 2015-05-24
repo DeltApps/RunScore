@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 
 public class RaceActivity extends ActionBarActivity
@@ -285,9 +286,9 @@ public class RaceActivity extends ActionBarActivity
     }
 
     private String millisToChrono(long duration){
-        long seconds = (duration/1000)%60;
-        long minutes = (seconds/60)%60;
-        long hours = (minutes/60)%24;
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        long hours = TimeUnit.MILLISECONDS.toHours(duration);
 
         return lessThanTen(hours)+":"+lessThanTen(minutes)+":"+lessThanTen(seconds);
     }
