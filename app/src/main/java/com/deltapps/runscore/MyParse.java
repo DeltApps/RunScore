@@ -174,7 +174,7 @@ public class MyParse {
                         raceParseObject.put("duration2", 0);
                         raceParseObject.put("avgPace2", 0);
                         raceParseObject.put("initialTime2", 0);
-                        raceParseObject.put("initialWeather2", 0);
+                        raceParseObject.put("initialWeather2", "0");
                         raceParseObject.put("initialTemp2", 999);
                         raceParseObject.put("initialHumidity2", 999);
                         raceParseObject.put("score2", 0);
