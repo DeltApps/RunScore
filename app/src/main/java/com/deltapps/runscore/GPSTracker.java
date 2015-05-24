@@ -247,7 +247,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                         editor.putLong("duration", cal.getTimeInMillis()-raceBeganAt);
                         editor.putLong("raceBeganAt", raceBeganAt);
                         editor.putString("weather", InitialCondsPrefs.getString("icon", "0"));
-                        editor.putFloat("temperature", temp);
+                        editor.putInt("temperature", temp);
                         editor.putInt("humidity", humidity);
                         setRaceStatus(RACE_FINISHED);
                         Toast.makeText(getApplicationContext(), "Carrera finalizada!",
