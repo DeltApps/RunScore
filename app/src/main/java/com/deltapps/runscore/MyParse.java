@@ -132,7 +132,7 @@ public class MyParse {
                         acl.setReadAccess(ParseUser.getCurrentUser(), true);
                         ParseQuery<ParseUser> query = ParseUser.getQuery();
                         query.whereEqualTo("username",
-                                objects.get(0).getParseUser("username1").getUsername());
+                                objects.get(0).get("username1").toString());
                         query.findInBackground(new FindCallback<ParseUser>() {
                             @Override
                             public void done(List<ParseUser> users, ParseException e) {
