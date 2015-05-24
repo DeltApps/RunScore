@@ -72,7 +72,7 @@ public class Race {
                 return username2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return username1;
             else
                 return username2;
@@ -86,7 +86,7 @@ public class Race {
                 return duration2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return duration1;
             else
                 return duration2;
@@ -100,7 +100,7 @@ public class Race {
                 return avgPace2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return avgPace1;
             else
                 return avgPace2;
@@ -114,7 +114,7 @@ public class Race {
                 return initialTime2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return initialTime1;
             else
                 return initialTime2;
@@ -128,7 +128,7 @@ public class Race {
                 return initialWeather2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return initialWeather1;
             else
                 return initialWeather2;
@@ -142,7 +142,7 @@ public class Race {
                 return initialTemp2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return initialTemp1;
             else
                 return initialTemp2;
@@ -156,7 +156,7 @@ public class Race {
                 return initialHumidity2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return initialHumidity1;
             else
                 return initialHumidity2;
@@ -171,7 +171,7 @@ public class Race {
                 return score2;
         }
         else {
-            if (myparse.getCurrentUser().equals(username1))
+            if (!myparse.getCurrentUser().equals(username1))
                 return score1;
             else
                 return score2;

@@ -114,7 +114,7 @@ public class MyParse {
         final CountDownLatch mCountDownLatch = new CountDownLatch(1);
         // Peticion a parse de un objeto de clave race con una distancia determinada
         // y sin adversario
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Race");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("race");
         query.whereEqualTo("distance", race.getDistance());
         query.whereEqualTo("username2", "");
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -194,12 +194,12 @@ public class MyParse {
 
     public ArrayList<Race> loadRaces(){
 
-        racesList = null;
+        racesList = new ArrayList<Race>();
 
         // queries combinados para formar query1 OR query2
-        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Race");
+        ParseQuery<ParseObject> query1 = ParseQuery.getQuery("race");
         query1.whereEqualTo("username1", getCurrentUser());
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Race");
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("race");
         query1.whereEqualTo("username2", getCurrentUser());
         List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
         queries.add(query1);
@@ -227,7 +227,7 @@ public class MyParse {
                                     initialTime1 = (long) o1.get("initialTime2");
 
                                 long initialTime2;
-                                if(o1.get("username1").equals(user))
+                                if(o1.get("username2").equals(user))
                                     initialTime2 = (long) o2.get("initialTime1");
                                 else
                                     initialTime2 = (long) o2.get("initialTime2");
@@ -247,14 +247,22 @@ public class MyParse {
                     Race race = new Race();
                     for(int i=0; i<races.size(); i++){
                         race.setRaceValues((int)races.get(i).get("distance"),
-                                (String)races.get(i).get("username1"), (long)races.get(i).get("duration1"),
-                                (long)races.get(i).get("avgPace1"), (long)races.get(i).get("initialTime1"),
-                                (String)races.get(i).get("initialWeather1"), (int)races.get(i).get("initialTemp1"),
-                                (int)races.get(i).get("initialHumidity1"), (int)races.get(i).get("score1"),
-                                (String)races.get(i).get("username2"), (long)races.get(i).get("duration2"),
-                                (long)races.get(i).get("avgPace2"), (long)races.get(i).get("initialTime2"),
-                                (String)races.get(i).get("initialWeather2"), (int)races.get(i).get("initialTemp2"),
-                                (int)races.get(i).get("initialHumidity2"),(int)races.get(i).get("score2"));
+                                races.get(i).get("username1").toString(),
+                                Long.parseLong(races.get(i).get("duration1").toString()),
+                                Long.parseLong(races.get(i).get("avgPace1").toString()),
+                                Long.parseLong(races.get(i).get("initialTime1").toString()),
+                                races.get(i).get("initialWeather1").toString(),
+                                (int)races.get(i).get("initialTemp1"),
+                                (int)races.get(i).get("initialHumidity1"),
+                                (int)races.get(i).get("score1"),
+                                (String)races.get(i).get("username2"),
+                                Long.parseLong(races.get(i).get("duration2").toString()),
+                                Long.parseLong(races.get(i).get("avgPace2").toString()),
+                                Long.parseLong(races.get(i).get("initialTime2").toString()),
+                                races.get(i).get("initialWeather2").toString(),
+                                (int)races.get(i).get("initialTemp2"),
+                                (int)races.get(i).get("initialHumidity2"),
+                                (int)races.get(i).get("score2"));
                         racesList.add(race);
                     }
                     mCountDownLatch.countDown();

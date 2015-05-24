@@ -300,8 +300,9 @@ public class RaceActivity extends ActionBarActivity
                 cal = Calendar.getInstance();
                 duration = sp.getLong("duration", 0);
                 cal.setTimeInMillis(duration);
-                chrono.setText(cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE)
-                        +":"+cal.get(Calendar.SECOND));
+                chrono.setText(lessThanTen(cal.get(Calendar.HOUR))
+                        +":"+lessThanTen(cal.get(Calendar.MINUTE))
+                        +":"+lessThanTen(cal.get(Calendar.SECOND)));
             }else if(raceStatus==GPSTracker.START_RACE_AVAILABLE){
                 // Si la carrera puede iniciarse...
                 startButton.setBackgroundColor(Color.parseColor("#003366"));

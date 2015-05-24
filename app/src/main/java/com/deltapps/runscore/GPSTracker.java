@@ -244,7 +244,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                         totalScore = Math.round(totalScore*score.getCorrectFactor());
                         editor.putInt("totalScore", (int)totalScore);
                         cal = Calendar.getInstance();
-                        editor.putLong("duration", cal.getTimeInMillis()-raceBeganAt);
+                        editor.putLong("duration", (cal.getTimeInMillis()-raceBeganAt));
                         editor.putLong("raceBeganAt", raceBeganAt);
                         editor.putString("weather", InitialCondsPrefs.getString("icon", "0"));
                         editor.putInt("temperature", temp);
