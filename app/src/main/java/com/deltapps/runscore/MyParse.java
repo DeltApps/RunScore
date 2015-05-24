@@ -246,8 +246,8 @@ public class MyParse {
                     }
 
                     // Establece los valores de las carreras cargadas en la lista
-                    Race race = new Race();
                     for(int i=0; i<races.size(); i++){
+                        Race race = new Race();
                         race.setRaceValues((int)races.get(i).get("distance"),
                                 races.get(i).get("username1").toString(),
                                 Long.parseLong(races.get(i).get("duration1").toString()),
