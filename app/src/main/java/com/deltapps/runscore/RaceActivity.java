@@ -191,7 +191,7 @@ public class RaceActivity extends ActionBarActivity
                     MyParse myparse = new MyParse();
                     Race race = new Race();
                     race.setMyRaceValues((int) distance, myparse.getCurrentUser(), duration, avgPace,
-                            Long.parseLong(GPSPrefs.getString("raceBeganAt", "0")),
+                            GPSPrefs.getLong("raceBeganAt", 0),
                             GPSPrefs.getString("weather", "0"), GPSPrefs.getInt("temperature", 999),
                             GPSPrefs.getInt("humidity", 999), score);
 
