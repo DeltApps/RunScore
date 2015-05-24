@@ -110,8 +110,27 @@ public class RaceActivity extends ActionBarActivity
         // Registra el listener para captar los cambios en GPSPrefs
         GPSPrefs.registerOnSharedPreferenceChangeListener(this);
 
+        GPSPrefs = getSharedPreferences("GPSPrefs", MODE_MULTI_PROCESS);
+        GPSPrefs.getInt("raceStatus", GPSTracker.START_RACE_NOT_AVAILABLE);
+
         if(raceStatus == GPSTracker.RACE_ON) {
             // Recoge los ultimos valores de la carrera y los muestra por pantalla
+            GPSstatus = GPSPrefs.getInt("GPSstatus", GPSTracker.GPS_OFF);
+            speed = GPSPrefs.getFloat("speed", 0);
+            pace = GPSPrefs.getLong("pace", 0);
+            distance = GPSPrefs.getFloat("distance", 0);
+            avgPace = GPSPrefs.getLong("avgPace", 0);
+            score = GPSPrefs.getInt("score", 0);
+            altitude = Double.parseDouble(GPSPrefs.getString("altitude", "0"));
+            printRaceValues();
+        }else if(raceStatus == GPSTracker.RACE_FINISHED){
+            // Si la carrera finaliza, para el crono, corrige la duracion total y actualiza datos
+            abortButton.setVisibility(View.GONE);
+            saveButton.setVisibility(View.VISIBLE);
+            discardButton.setVisibility(View.VISIBLE);
+            chrono.stop();
+            duration = GPSPrefs.getLong("duration", 0);
+            chrono.setText(millisToChrono(duration));
             GPSstatus = GPSPrefs.getInt("GPSstatus", GPSTracker.GPS_OFF);
             speed = GPSPrefs.getFloat("speed", 0);
             pace = GPSPrefs.getLong("pace", 0);
