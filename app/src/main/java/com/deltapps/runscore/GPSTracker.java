@@ -241,6 +241,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                         editor.putLong("avgPace", avgPace);
                         editor.putString("altitude", Double.toString(altitude));
                         editor.putString("altitudeInt", Double.toString(altitudeInt));
+                        totalScore = Math.round(totalScore*score.getCorrectFactor());
                         editor.putInt("totalScore", (int)totalScore);
                         cal = Calendar.getInstance();
                         editor.putLong("duration", cal.getTimeInMillis()-raceBeganAt);

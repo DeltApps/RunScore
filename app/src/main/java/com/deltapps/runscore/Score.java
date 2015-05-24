@@ -29,14 +29,21 @@ public class Score {
         float factorTempAUX;
         if(altitude < 0)
             altitude = 0;
-        if((temp < 0) || (temp > 40))
-            factorTempAUX = factorTempExtremo;
-        else {
-            if((temp < 15) || (temp > 30))
-                factorTempAUX = factorTempMedio;
-            else
-                factorTempAUX = factorTempBajo;
-        }
+
+        if(temp!=999) {
+            if ((temp < 0) || (temp > 40))
+                factorTempAUX = factorTempExtremo;
+            else {
+                if ((temp < 15) || (temp > 30))
+                    factorTempAUX = factorTempMedio;
+                else
+                    factorTempAUX = factorTempBajo;
+            }
+        }else
+            factorTempAUX = 0;
+
+        if(humidity == 999)
+            humidity = 0;
 
         factorGeneral = (float)altitude*factorAltitud +
                 (float)humidity*factorHumidity +
