@@ -40,7 +40,6 @@ public class HistorialBaseAdapter extends BaseAdapter {
         LinearLayout rowRace;
         TextView distance;
         TextView score;
-        TextView status;
     }
 
     @Override
@@ -57,7 +56,6 @@ public class HistorialBaseAdapter extends BaseAdapter {
             holder.rowRace = (LinearLayout) convertView.findViewById(R.id.rowRace);
             holder.distance = (TextView) convertView.findViewById(R.id.distance);
             holder.score = (TextView) convertView.findViewById(R.id.score);
-            holder.status = (TextView) convertView.findViewById(R.id.status);
 
             convertView.setTag(holder);
         }else
@@ -68,11 +66,11 @@ public class HistorialBaseAdapter extends BaseAdapter {
 
         if(race.getUsername(false)!=null && !race.getUsername(false).isEmpty()) {
             if (race.getScore(true) > race.getScore(false))
-                holder.rowRace.setBackgroundColor(Color.parseColor("#00ff00"));
+                holder.rowRace.setBackgroundColor(Color.parseColor("#32AE27"));
             else if (race.getScore(true) < race.getScore(false))
-                holder.rowRace.setBackgroundColor(Color.parseColor("#ff0000"));
+                holder.rowRace.setBackgroundColor(Color.parseColor("#AE0000"));
             else
-                holder.rowRace.setBackgroundColor(Color.parseColor("#ffff00"));
+                holder.rowRace.setBackgroundColor(Color.parseColor("#D08A00"));
 
         }else
             holder.rowRace.setBackgroundColor(Color.parseColor("#888888"));

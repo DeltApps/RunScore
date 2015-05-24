@@ -45,13 +45,4 @@
         android:textColor="#ffffff"
         android:layout_margin="5dp"/>
 
-    <TextView android:id="@+id/status"
-        android:text="@string/sin_rival"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textColor="#ffffff"
-        android:layout_marginLeft="5dp"/>
-
-
 </LinearLayout>
