@@ -194,14 +194,14 @@ public class MyParse {
 
     public ArrayList<Race> loadRaces(){
 
-        racesList = new ArrayList<Race>();
+        racesList = new ArrayList<>();
 
         // queries combinados para formar query1 OR query2
         ParseQuery<ParseObject> query1 = ParseQuery.getQuery("race");
         query1.whereEqualTo("username1", getCurrentUser());
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("race");
-        query1.whereEqualTo("username2", getCurrentUser());
-        List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
+        query2.whereEqualTo("username2", getCurrentUser());
+        List<ParseQuery<ParseObject>> queries = new ArrayList<>();
         queries.add(query1);
         queries.add(query2);
 
