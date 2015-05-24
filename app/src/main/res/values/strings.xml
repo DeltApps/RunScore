@@ -19,7 +19,7 @@
     <string name="speed">Velocidad</string>
     <string name="altitude">Altitud</string>
     <string name="pace">Ritmo</string>
-    <string name="avgPace">Ritmo Medio</string>
+    <string name="avgPace">/Ritmo</string>
     <string name="score">Puntuación</string>
     <string name="start">Iniciar</string>
     <string name="abort">Abandonar</string>
@@ -27,6 +27,5 @@
     <string name="discard">Descartar</string>
     <string name="distance">Distancia</string>
     <string name="Km">Km</string>
-    <string name="sin_rival">SR</string>
 
 </resources>

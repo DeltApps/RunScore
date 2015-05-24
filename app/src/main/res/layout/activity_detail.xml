@@ -20,7 +20,8 @@
         android:orientation="vertical"
         android:id="@+id/colum_user1"
         android:layout_below="@+id/distancia_total"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="20dp">
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +70,8 @@
         android:orientation="vertical"
         android:layout_below="@+id/distancia_total"
         android:id="@+id/colum_user2"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp">
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -262,7 +262,7 @@ public class RaceActivity extends ActionBarActivity
         }else {
             cal = Calendar.getInstance();
             cal.setTimeInMillis(pace);
-            paceTextView.setText(lessThanTen(cal.get(Calendar.MINUTE))
+            paceTextView.setText("Ritmo: "+lessThanTen(cal.get(Calendar.MINUTE))
                     + ":" + lessThanTen(cal.get(Calendar.SECOND)) + " min/km");
         }
         distanceTextView.setText("Dist: "+round(distance,1)+" km");
