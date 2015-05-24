@@ -150,6 +150,7 @@ public class MyParse {
                         objects.get(0).put("initialWeather2", race.getInitialWeather(true));
                         objects.get(0).put("initialTemp2", race.getInitialTemp(true));
                         objects.get(0).put("initialHumidity2", race.getInitialHumidity(true));
+                        objects.get(0).put("score2", race.getScore(true));
 
                         // Actualiza el objeto parse
                         objects.get(0).saveEventually();
@@ -166,6 +167,15 @@ public class MyParse {
                         raceParseObject.put("initialWeather1", race.getInitialWeather(true));
                         raceParseObject.put("initialTemp1", race.getInitialTemp(true));
                         raceParseObject.put("initialHumidity1", race.getInitialHumidity(true));
+                        raceParseObject.put("score1", race.getScore(true));
+                        raceParseObject.put("username2", "");
+                        raceParseObject.put("duration2", 0);
+                        raceParseObject.put("avgPace2", 0);
+                        raceParseObject.put("initialTime2", 0);
+                        raceParseObject.put("initialWeather2", 0);
+                        raceParseObject.put("initialTemp2", 999);
+                        raceParseObject.put("initialHumidity2", 999);
+                        raceParseObject.put("score2", 0);
 
                         // Guarda el objeto parse
                         raceParseObject.saveEventually();
