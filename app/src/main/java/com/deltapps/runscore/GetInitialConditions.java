@@ -101,7 +101,7 @@ public class GetInitialConditions extends AsyncTask<Void, Void, Void> {
         /* Crea/abre el archivo para los datos e inicializa el editor para escribir en el */
         initialConditions = context.getSharedPreferences("InitialConditions", Context.MODE_MULTI_PROCESS);
         editor = initialConditions.edit();
-        editor.putFloat("temperature", 999f);
+        editor.putInt("temperature", 999);
         editor.putInt("humidity", 999);
         editor.putString("GoogleMapsAltitude", "Error");
         editor.commit();
@@ -184,7 +184,7 @@ public class GetInitialConditions extends AsyncTask<Void, Void, Void> {
                         e.printStackTrace();
                     }
                     try{
-                        editor.putInt("humidity", 100 * Integer.parseInt(currently.getString("humidity")));
+                        editor.putInt("humidity", Math.round(100*Float.parseFloat(currently.getString("humidity"))));
                     }catch(JSONException e){
                         e.printStackTrace();
                     }
