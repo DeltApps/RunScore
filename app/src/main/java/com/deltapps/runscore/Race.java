@@ -4,91 +4,63 @@ public class Race {
 
     MyParse myparse = new MyParse();
 
-    float distance = 0;
-    String username = null;
-    long duration = 0;
-    long avgPace = 0;
-    float avgSpeed = 0;
-    float maxSpeed = 0;
-    long initialTime = 0;
-    String initialWeather = null;
-    float initialTemp = 0;
-    float initialWind = 0;
-    int initialHumidity = 0;
-    float score = 0;
+    int distance = 0;
     String username1 = null;
     long duration1 = 0;
     long avgPace1 = 0;
-    float avgSpeed1 = 0;
-    float maxSpeed1 = 0;
     long initialTime1 = 0;
     String initialWeather1 = null;
     float initialTemp1 = 0;
-    float initialWind1 = 0;
     int initialHumidity1 = 0;
-    float score1 = 0;
+    long score1 = 0;
     String username2 = null;
     long duration2 = 0;
     long avgPace2 = 0;
-    float avgSpeed2 = 0;
-    float maxSpeed2 = 0;
     long initialTime2 = 0;
     String initialWeather2 = null;
     float initialTemp2 = 0;
-    float initialWind2 = 0;
     int initialHumidity2 = 0;
-    float score2 = 0;
+    long score2 = 0;
 
-    public void setMyRaceValues(float distance, String username, long duration, long avgPace,
-                                float avgSpeed, float maxSpeed, long initialTime,
-                                String initialWeather, float initialTemp, float initialWind,
-                                int initialHumidity, float score){
+    public void setMyRaceValues(int distance, String username, long duration, long avgPace,
+                                long initialTime, String initialWeather, float initialTemp,
+                                int initialHumidity, long score){
         this.distance = distance;
-        this.username = username;
-        this.duration = duration;
-        this.avgPace = avgPace;
-        this.avgSpeed = avgSpeed;
-        this.maxSpeed = maxSpeed;
-        this.initialTime = initialTime;
-        this.initialWeather = initialWeather;
-        this.initialTemp = initialTemp;
-        this.initialWind = initialWind;
-        this.initialHumidity = initialHumidity;
-        this.score = score;
+        this.username1 = username;
+        this.duration1 = duration;
+        this.avgPace1 = avgPace;
+        this.initialTime1 = initialTime;
+        this.initialWeather1 = initialWeather;
+        this.initialTemp1 = initialTemp;
+        this.initialHumidity1 = initialHumidity;
+        this.score1 = score;
 
     }
-    public void setRaceValues(float distance, String username1, long duration1, long avgPace1,
-                              float avgSpeed1, float maxSpeed1, long initialTime1, String initialWeather1,
-                              float initialTemp1, float initialWind1, int initialHumidity1, float score1,
-                              String username2, long duration2, long avgPace2, float avgSpeed2,
-                              float maxSpeed2, long initialTime2, String initialWeather2,
-                              float initialTemp2, float initialWind2, int initialHumidity2, float score2){
+    public void setRaceValues(int distance, String username1, long duration1, long avgPace1,
+                              long initialTime1, String initialWeather1, float initialTemp1,
+                              int initialHumidity1, long score1, String username2, long duration2,
+                              long avgPace2, long initialTime2, String initialWeather2,
+                              float initialTemp2, int initialHumidity2, long score2){
         this.distance = distance;
         this.username1 = username1;
         this.duration1 = duration1;
         this.avgPace1 = avgPace1;
-        this.avgSpeed1 = avgSpeed1;
-        this.maxSpeed1 = maxSpeed1;
         this.initialTime1 = initialTime1;
         this.initialWeather1 = initialWeather1;
         this.initialTemp1 = initialTemp1;
-        this.initialWind1 = initialWind1;
         this.initialHumidity1 = initialHumidity1;
         this.score1 = score1;
 
         this.username2 = username2;
         this.duration2 = duration2;
         this.avgPace2 = avgPace2;
-        this.avgSpeed2 = avgSpeed2;
-        this.maxSpeed2 = maxSpeed2;
         this.initialTime2 = initialTime2;
         this.initialWeather2 = initialWeather2;
         this.initialTemp2 = initialTemp2;
-        this.initialWind2 = initialWind2;
         this.initialHumidity2 = initialHumidity2;
         this.score2 = score2;
     }
-    public float getDistance(){
+    public int getDistance(){
 
         return distance;
     }
@@ -134,34 +106,6 @@ public class Race {
                 return avgPace2;
         }
     }
-    public float getAvgSpeed(boolean myValue){
-        if (myValue) {
-            if (myparse.getCurrentUser().equals(username1))
-                return avgSpeed1;
-            else
-                return avgSpeed2;
-        }
-        else {
-            if (myparse.getCurrentUser().equals(username1))
-                return avgSpeed1;
-            else
-                return avgSpeed2;
-        }
-    }
-    public float getMaxSpeed(boolean myValue){
-        if (myValue) {
-            if (myparse.getCurrentUser().equals(username1))
-                return maxSpeed1;
-            else
-                return maxSpeed2;
-        }
-        else {
-            if (myparse.getCurrentUser().equals(username1))
-                return maxSpeed1;
-            else
-                return maxSpeed2;
-        }
-    }
     public long getInitialTime(boolean myValue){
         if (myValue) {
             if (myparse.getCurrentUser().equals(username1))
@@ -204,20 +148,6 @@ public class Race {
                 return initialTemp2;
         }
     }
-    public float getInitialWind(boolean myValue){
-        if (myValue) {
-            if (myparse.getCurrentUser().equals(username1))
-                return initialWind1;
-            else
-                return initialWind2;
-        }
-        else {
-            if (myparse.getCurrentUser().equals(username1))
-                return initialWind1;
-            else
-                return initialWind2;
-        }
-    }
     public int getInitialHumidity(boolean myValue){
         if (myValue) {
             if (myparse.getCurrentUser().equals(username1))
@@ -233,7 +163,7 @@ public class Race {
         }
     }
 
-    public float getScore(boolean myValue){
+    public long getScore(boolean myValue){
         if (myValue){
             if (myparse.getCurrentUser().equals(username1))
                 return score1;

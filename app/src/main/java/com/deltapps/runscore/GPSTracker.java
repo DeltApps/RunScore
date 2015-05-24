@@ -1,4 +1,5 @@
 package com.deltapps.runscore;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +9,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.SystemClock;
@@ -55,7 +55,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
     private PowerManager.WakeLock cpuWakeLock;
 
     private Calendar cal;
-    private long raceBeganAt;
+    private long raceBeganAt = 0;
 
     private Score score;
 
@@ -67,23 +67,23 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
     private double latitude;
     private double longitude;
     private float speed;
-    private float raceDistance = 1500f;
+    private float raceDistance;
     private float distance=0;
     private float distanceInt;
     private long pace;
     private long avgPace;
     private double altitudeInt;
     private double altitude;
+    private long totalScore = 0;
+    private long intervalScore;
     private int raceStatus;
 
-    private float temp;
+    private int temp;
     private int humidity;
 
     private SharedPreferences InitialCondsPrefs;
     private SharedPreferences gpsPrefs;
     private SharedPreferences.Editor editor;
-
-    private Handler handler;
 
     @Override
     public void onCreate() {
@@ -94,11 +94,12 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
         cpuWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "gps_service");
         cpuWakeLock.acquire();
 
-        handler = new Handler();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        raceDistance = intent.getIntExtra("raceDistance", 5)*1000;
 
         // Inicializa los objetos para leer y escribir datos en GPSPrefs
         gpsPrefs = getSharedPreferences("GPSPrefs", MODE_MULTI_PROCESS);
@@ -216,6 +217,9 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                     if(raceBeganAt!=0 && distance!=0)
                         avgPace = (long) ((cal.getTimeInMillis()-raceBeganAt)/distance);
                     altitude = altitude + altitudeInt;
+                    score.setIntervalValues(altitudeInt, speed);
+                    intervalScore = score.getIntervalScore();
+                    totalScore = totalScore + intervalScore;
 
                     if(distance < raceDistance) { // Si no se ha alcanzado la distancia objetivo...
                         // Guarda nuevos valores
@@ -225,23 +229,25 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                         editor.putLong("avgPace", avgPace);
                         editor.putString("altitude", Double.toString(altitude));
                         editor.putString("altitudeInt", Double.toString(altitudeInt));
-                        editor.putString("latitude", Double.toString(latitude));
-                        editor.putString("longitude", Double.toString(longitude));
+                        editor.putInt("score", (int) totalScore);
                         editor.commit();
                     }else if(raceStatus==RACE_ON){
                         // Si se cumple la distancia objetivo y la carrera está en marcha
                         // guarda los ultimos datos y la finaliza (carrera y servicio)
                         editor.putFloat("speed", speed);
+                        editor.putFloat("avgSpeed", raceDistance/(cal.getTimeInMillis()-raceBeganAt));
                         editor.putLong("pace", pace);
-                        editor.putFloat("distance", raceDistance / 1000);
+                        editor.putFloat("distance", raceDistance/1000);
                         editor.putLong("avgPace", avgPace);
                         editor.putString("altitude", Double.toString(altitude));
                         editor.putString("altitudeInt", Double.toString(altitudeInt));
-                        editor.putString("latitude", Double.toString(latitude));
-                        editor.putString("longitude", Double.toString(longitude));
+                        editor.putInt("totalScore", (int)totalScore);
                         cal = Calendar.getInstance();
                         editor.putLong("duration", cal.getTimeInMillis()-raceBeganAt);
                         editor.putLong("raceBeganAt", raceBeganAt);
+                        editor.putString("weather", InitialCondsPrefs.getString("icon", "0"));
+                        editor.putFloat("temperature", temp);
+                        editor.putInt("humidity", humidity);
                         setRaceStatus(RACE_FINISHED);
                         Toast.makeText(getApplicationContext(), "Carrera finalizada!",
                                 Toast.LENGTH_SHORT).show();
@@ -398,7 +404,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
     public void asyncTaskCompleted() {
         InitialCondsPrefs = getSharedPreferences("InitialConditions", MODE_MULTI_PROCESS);
 
-        temp = InitialCondsPrefs.getFloat("temperature", 0f);
+        temp = InitialCondsPrefs.getInt("temperature", 0);
         humidity = InitialCondsPrefs.getInt("humidity", 0);
         String auxAlt = InitialCondsPrefs.getString("GoogleMapsAltitude", "Error");
         if(auxAlt != null){
@@ -411,7 +417,7 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
         score.setInitialConditions(altitude, temp, humidity);
 
         editor.putString("altitude", Double.toString(altitude));
-        editor.putFloat("temperature", temp);
+        editor.putInt("temperature", temp);
         editor.putInt("humidity", humidity);
         setRaceStatus(START_RACE_AVAILABLE);
     }

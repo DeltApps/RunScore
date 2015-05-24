@@ -4,33 +4,53 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.deltapps.runscore.RaceActivity">
+    tools:context="com.deltapps.runscore.RaceActivity"
+    android:animateLayoutChanges="true" >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentLeft="true"
-        android:id="@+id/linearLayoutLeft"
-        >
-        <TextView android:text="@string/speed" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textSize="20sp"
+        android:id="@+id/linearLayoutLeft" >
+        <TextView
+            android:id="@+id/speed"
+            android:text="@string/speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
-        <TextView android:text="@string/distance" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textSize="20sp"
+        <TextView
+            android:id="@+id/distance"
+            android:text="@string/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
-        <TextView android:text="@string/altitude" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/altitude"
+            android:text="@string/altitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentRight="true">
-        <TextView android:text="@string/pace" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textSize="20sp"
+        <TextView
+            android:id="@+id/pace"
+            android:text="@string/pace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_marginBottom="20dp"/>
-        <TextView android:text="@string/avgPace" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/avgPace"
+            android:text="@string/avgPace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -38,17 +58,24 @@
         android:orientation="vertical"
         android:layout_centerInParent="true">
         <Chronometer
-            android:text="tiempo"
+            android:id="@+id/chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:textSize="40sp"
             android:layout_margin="20dp"
             android:format="H:MM:SS"/>
-        <TextView android:text="@string/score" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:textSize="30sp"/>
+        <TextView
+            android:id="@+id/score"
+            android:text="@string/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"/>
 
     </LinearLayout>
     <Button
+        android:id="@+id/start"
         android:layout_width="256dp"
         android:layout_height="wrap_content"
         android:text="@string/start"
@@ -56,10 +83,11 @@
         android:visibility="visible"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#003366"
+        android:background="#888888"
         android:textColor="#ffffff"
         android:onClick="click_Start"/>
     <Button
+        android:id="@+id/abort"
         android:layout_width="256dp"
         android:layout_height="wrap_content"
         android:text="@string/abort"
@@ -71,6 +99,7 @@
         android:textColor="#ffffff"
         android:onClick="click_Abort"/>
     <Button
+        android:id="@+id/save"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/save"
@@ -82,6 +111,7 @@
         android:textColor="#ffffff"
         android:onClick="click_Save"/>
     <Button
+        android:id="@+id/discard"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/discard"
@@ -91,5 +121,5 @@
         android:layout_alignParentRight="true"
         android:background="#ffc90c05"
         android:textColor="#ffffff"
-        android:onClick="click_Discart"/>
+        android:onClick="click_Discard"/>
 </RelativeLayout>

@@ -101,6 +101,13 @@ public class MyParse {
         return ParseUser.getCurrentUser().getUsername();
     }
 
+    public boolean isLogged(){
+        if(ParseUser.getCurrentUser()!=null)
+            return true;
+        else
+            return false;
+    }
+
     public void saveRace(final Race race){
 
         // Cuenta atrás para esperar a una tarea en background
@@ -139,12 +146,9 @@ public class MyParse {
                         objects.get(0).put("username2", race.getUsername(true));
                         objects.get(0).put("duration2", race.getDuration(true));
                         objects.get(0).put("avgPace2", race.getAvgPace(true));
-                        objects.get(0).put("avpSpeed2", race.getAvgSpeed(true));
-                        objects.get(0).put("maxSpeed2", race.getMaxSpeed(true));
                         objects.get(0).put("initialTime2", race.getInitialTime(true));
                         objects.get(0).put("initialWeather2", race.getInitialWeather(true));
                         objects.get(0).put("initialTemp2", race.getInitialTemp(true));
-                        objects.get(0).put("initialWind2", race.getInitialWind(true));
                         objects.get(0).put("initialHumidity2", race.getInitialHumidity(true));
 
                         // Actualiza el objeto parse
@@ -158,12 +162,9 @@ public class MyParse {
                         raceParseObject.put("username1", race.getUsername(true));
                         raceParseObject.put("duration1", race.getDuration(true));
                         raceParseObject.put("avgPace1", race.getAvgPace(true));
-                        raceParseObject.put("avpSpeed1", race.getAvgSpeed(true));
-                        raceParseObject.put("maxSpeed1", race.getMaxSpeed(true));
                         raceParseObject.put("initialTime1", race.getInitialTime(true));
                         raceParseObject.put("initialWeather1", race.getInitialWeather(true));
                         raceParseObject.put("initialTemp1", race.getInitialTemp(true));
-                        raceParseObject.put("initialWind1", race.getInitialWind(true));
                         raceParseObject.put("initialHumidity1", race.getInitialHumidity(true));
 
                         // Guarda el objeto parse
@@ -236,54 +237,19 @@ public class MyParse {
                     // Establece los valores de las carreras cargadas en la lista
                     Race race = new Race();
                     for(int i=0; i<races.size(); i++){
-                        race.setRaceValues((float)races.get(i).get("distance"),
+                        race.setRaceValues((int)races.get(i).get("distance"),
                                 (String)races.get(i).get("username1"), (long)races.get(i).get("duration1"),
-                                (long)races.get(i).get("avgPace1"), (float)races.get(i).get("avgSpeed1"),
-                                (float)races.get(i).get("maxSpeed1"), (long)races.get(i).get("initialTime1"),
+                                (long)races.get(i).get("avgPace1"), (long)races.get(i).get("initialTime1"),
                                 (String)races.get(i).get("initialWeather1"), (float)races.get(i).get("initialTemp1"),
-                                (float)races.get(i).get("initialWind1"), (int)races.get(i).get("initialHumidity1"),
+                                (int)races.get(i).get("initialHumidity1"), (int)races.get(i).get("score1"),
                                 (String)races.get(i).get("username2"), (long)races.get(i).get("duration2"),
-                                (long)races.get(i).get("avgPace2"), (float)races.get(i).get("avgSpeed2"),
-                                (float)races.get(i).get("maxSpeed2"), (long)races.get(i).get("initialTime2"),
+                                (long)races.get(i).get("avgPace2"), (long)races.get(i).get("initialTime2"),
                                 (String)races.get(i).get("initialWeather2"), (float)races.get(i).get("initialTemp2"),
-                                (float)races.get(i).get("initialWind2"), (int)races.get(i).get("initialHumidity2"));
+                                (int)races.get(i).get("initialHumidity2"),(int)races.get(i).get("score2"));
                         racesList.add(race);
                     }
                     mCountDownLatch.countDown();
-                }else{
-                    // Error ParseException
-                    if(e.getCode() == ParseException.CONNECTION_FAILED
-                            || e.getCode() == ParseException.TIMEOUT){
-                        // Error en la conexion con Parse, cargamos en local
-                        ParseQuery<ParseObject> query = ParseQuery.getQuery("Race");
-                        query.fromLocalDatastore();
-                        query.findInBackground(new FindCallback<ParseObject>() {
-                            @Override
-                            public void done(List<ParseObject> races, ParseException e) {
-                                if(e==null){
-                                    // Establece los valores de las carreras cargadas en la lista
-                                    Race race = new Race();
-                                    for(int i=0; i<races.size(); i++){
-                                        race.setRaceValues((float)races.get(i).get("distance"),
-                                                (String)races.get(i).get("username1"), (long)races.get(i).get("duration1"),
-                                                (long)races.get(i).get("avgPace1"), (float)races.get(i).get("avgSpeed1"),
-                                                (float)races.get(i).get("maxSpeed1"), (long)races.get(i).get("initialTime1"),
-                                                (String)races.get(i).get("initialWeather1"), (float)races.get(i).get("initialTemp1"),
-                                                (float)races.get(i).get("initialWind1"), (int)races.get(i).get("initialHumidity1"),
-                                                (String)races.get(i).get("username2"), (long)races.get(i).get("duration2"),
-                                                (long)races.get(i).get("avgPace2"), (float)races.get(i).get("avgSpeed2"),
-                                                (float)races.get(i).get("maxSpeed2"), (long)races.get(i).get("initialTime2"),
-                                                (String)races.get(i).get("initialWeather2"), (float)races.get(i).get("initialTemp2"),
-                                                (float)races.get(i).get("initialWind2"), (int)races.get(i).get("initialHumidity2"));
-                                        racesList.add(race);
-                                    }
-                                }
-                                mCountDownLatch.countDown();
-                            }
-                        });
-                    }
                 }
-
             }
         });
 

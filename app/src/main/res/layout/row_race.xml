@@ -3,8 +3,9 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="75dp"
-    android:background="#ff888888"
-    android:gravity="center">
+    android:background="#888888"
+    android:gravity="center"
+    android:id="@+id/rowRace">
 
     <TextView
         android:text="@string/distance"
@@ -37,14 +38,14 @@
         android:textColor="#ffffff"
         android:layout_margin="5dp"/>
 
-    <TextView android:id="@+id/puntuacion"
+    <TextView android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:layout_margin="5dp"/>
 
-    <TextView android:id="@+id/estado"
+    <TextView android:id="@+id/status"
         android:text="@string/sin_rival"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,5 +55,3 @@
 
 
 </LinearLayout>
-
->>>>>>> CARL

@@ -17,17 +17,18 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        // Enable Local Datastore.
-        Parse.enableLocalDatastore(this);
 
         Parse.initialize(this, "F5Q8Kr8RfqUcToRMfzqEkRtlGExNErs1vq3APjix",
                 "eRadbh2qFcQft2xYwyo0EAp6b1jJKiiTBUMuBErd");
 
+        MyParse myparse = new MyParse();
+        if(myparse.isLogged()) {
+            startActivity(new Intent(this, HistorialActivity.class));
+            finish();
+        }else
+            setContentView(R.layout.activity_login);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

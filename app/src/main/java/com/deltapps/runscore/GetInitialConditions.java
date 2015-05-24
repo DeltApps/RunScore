@@ -180,8 +180,8 @@ public class GetInitialConditions extends AsyncTask<Void, Void, Boolean> {
                         e.printStackTrace();
                     }
                     try{
-                        editor.putFloat("temperature",
-                                Float.parseFloat(currently.getString("temperature")));
+                        editor.putInt("temperature",
+                                Math.round(Float.parseFloat(currently.getString("temperature"))));
                     }catch(JSONException e){
                         e.printStackTrace();
                     }

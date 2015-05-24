@@ -1,10 +1,15 @@
 package com.deltapps.runscore;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,7 +37,10 @@ public class HistorialBaseAdapter extends BaseAdapter {
     public long getItemId(int position) { return position; }
 
     static class ViewHolder{
-
+        LinearLayout rowRace;
+        TextView distance;
+        TextView score;
+        TextView status;
     }
 
     @Override
@@ -46,11 +54,28 @@ public class HistorialBaseAdapter extends BaseAdapter {
             convertView= inflater.inflate(R.layout.row_race, parent, false);
             holder = new ViewHolder();
 
-
+            holder.rowRace = (LinearLayout) convertView.findViewById(R.id.rowRace);
+            holder.distance = (TextView) convertView.findViewById(R.id.distance);
+            holder.score = (TextView) convertView.findViewById(R.id.score);
+            holder.status = (TextView) convertView.findViewById(R.id.status);
 
             convertView.setTag(holder);
         }else
             holder = (ViewHolder) convertView.getTag();
+
+        holder.distance.setText(Integer.toString(race.getDistance()));
+        holder.score.setText(Long.toString(race.getScore(true)));
+
+        if(race.getUsername(false)!=null && !race.getUsername(false).isEmpty()) {
+            if (race.getScore(true) > race.getScore(false))
+                holder.rowRace.setBackgroundColor(Color.parseColor("#00ff00"));
+            else if (race.getScore(true) < race.getScore(false))
+                holder.rowRace.setBackgroundColor(Color.parseColor("#ff0000"));
+            else
+                holder.rowRace.setBackgroundColor(Color.parseColor("#ffff00"));
+
+        }else
+            holder.rowRace.setBackgroundColor(Color.parseColor("#888888"));
 
         return convertView;
     }

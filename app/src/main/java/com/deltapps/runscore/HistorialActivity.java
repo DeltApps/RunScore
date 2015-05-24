@@ -41,7 +41,7 @@ public class HistorialActivity extends ActionBarActivity {
                 MyParse myparse = new MyParse();
                 racesList = myparse.loadRaces();
 
-                if(racesList.size() > 0){
+                if(racesList!=null && racesList.size()>0){
                     // Hilo principal para inflar el listview
                     runOnUiThread(new Runnable() {
                         @Override
@@ -94,7 +94,7 @@ public class HistorialActivity extends ActionBarActivity {
 
         final Dialog d = new Dialog(this);
 
-        d.setTitle(getString(R.string.distance));
+        d.setTitle(getString(R.string.distance_km));
         d.setContentView(R.layout.dialog_distance);
 
         final NumberPicker distancePicker = (NumberPicker) d.findViewById(R.id.distancePicker);
@@ -108,7 +108,7 @@ public class HistorialActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(HistorialActivity.this, RaceActivity.class);
-                i.putExtra("distance", distancePicker.getValue());
+                i.putExtra("raceDistance", distancePicker.getValue());
                 startActivity(i);
                 d.dismiss();
             }

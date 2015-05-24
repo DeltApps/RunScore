@@ -11,18 +11,16 @@ public class Score {
     float factorGeneral = 0;
 
     double altitude = 0;
-    String weather;
     int temp = 0;
     int humidity = 0;
 
-    float altitudeInt = 0;
+    double altitudeInt = 0;
     float speedInt = 0;
 
     long score = 0;
 
-    public void setInitialConditions(double altitude, String weather, int temp, int humidity){
+    public void setInitialConditions(double altitude, int temp, int humidity){
         this.altitude = altitude;
-        this.weather = weather;
         this.temp = temp;
         this.humidity = humidity;
     }
@@ -46,7 +44,7 @@ public class Score {
         return factorGeneral;
     }
 
-    public void setIntervalValues(float altitudeInt, float speedInt){
+    public void setIntervalValues(double altitudeInt, float speedInt){
         this.altitudeInt = altitudeInt;
         this.speedInt = speedInt;
     }
