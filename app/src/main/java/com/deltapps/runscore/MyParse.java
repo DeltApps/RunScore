@@ -168,7 +168,6 @@ public class MyParse {
                         raceParseObject.put("initialHumidity1", race.getInitialHumidity(true));
 
                         // Guarda el objeto parse
-                        raceParseObject.pinInBackground();
                         raceParseObject.saveEventually();
                     }
 
