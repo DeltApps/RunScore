@@ -32,32 +32,10 @@ public class DetailActivity extends ActionBarActivity {
 
         user1.setText(race.getUsername(true));
         user2.setText(race.getUsername(false));
-        c.setTimeInMillis(race.getDuration(true));
-        if (c.get(Calendar.MINUTE) < 10 && c.get(Calendar.SECOND) < 10)
-            time1.setText("0" + c.get(Calendar.HOUR) + ":" + "0" + c.get(Calendar.MINUTE) + ":" +
-                            "0" + c.get(Calendar.SECOND));
-        else if (c.get(Calendar.MINUTE) < 10 && c.get(Calendar.SECOND) >=10)
-            time1.setText("0" + c.get(Calendar.HOUR) + ":" + "0" + c.get(Calendar.MINUTE) + ":" +
-                            c.get(Calendar.SECOND));
-        else if (c.get(Calendar.MINUTE) >=10 && c.get(Calendar.SECOND) < 10)
-            time1.setText("0" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + "0" +
-                            c.get(Calendar.SECOND));
-        else
-            time1.setText("0" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" +
-                    c.get(Calendar.SECOND));
-        c.setTimeInMillis(race.getDuration(false));
-        if (c.get(Calendar.MINUTE) < 10 && c.get(Calendar.SECOND) < 10)
-            time2.setText("0" + c.get(Calendar.HOUR) + ":" + "0" + c.get(Calendar.MINUTE) + ":" +
-                    "0" + c.get(Calendar.SECOND));
-        else if (c.get(Calendar.MINUTE) < 10 && c.get(Calendar.SECOND) >=10)
-            time2.setText("0" + c.get(Calendar.HOUR) + ":" + "0" + c.get(Calendar.MINUTE) + ":" +
-                    c.get(Calendar.SECOND));
-        else if (c.get(Calendar.MINUTE) >=10 && c.get(Calendar.SECOND) < 10)
-            time2.setText("0" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + "0" +
-                    c.get(Calendar.SECOND));
-        else
-            time2.setText("0" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" +
-                    c.get(Calendar.SECOND));
+
+        time1.setText(millisToChrono(race.getDuration(true)));
+
+        time2.setText(millisToChrono(race.getDuration(false)));
 
         average_rate_user1.setText(String.valueOf(race.getAvgPace(true)));
         average_rate_user2.setText(String.valueOf(race.getAvgPace(false)));
@@ -87,5 +65,20 @@ public class DetailActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String millisToChrono(long duration){
+        long seconds = (duration/1000)%60;
+        long minutes = (seconds/60)%60;
+        long hours = (minutes/60)%24;
+
+        return lessThanTen(hours)+":"+lessThanTen(minutes)+":"+lessThanTen(seconds);
+    }
+
+    private String lessThanTen(long num){
+        if(num<10)
+            return "0"+Long.toString(num);
+        else
+            return Long.toString(num);
     }
 }

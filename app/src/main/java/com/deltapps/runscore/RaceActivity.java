@@ -266,11 +266,19 @@ public class RaceActivity extends ActionBarActivity
         return bd.floatValue();
     }
 
-    private String lessThanTen(int num){
+    private String millisToChrono(long duration){
+        long seconds = (duration/1000)%60;
+        long minutes = (seconds/60)%60;
+        long hours = (minutes/60)%24;
+
+        return lessThanTen(hours)+":"+lessThanTen(minutes)+":"+lessThanTen(seconds);
+    }
+
+    private String lessThanTen(long num){
         if(num<10)
-            return "0"+Integer.toString(num);
+            return "0"+Long.toString(num);
         else
-            return Integer.toString(num);
+            return Long.toString(num);
     }
 
     @Override
@@ -296,13 +304,8 @@ public class RaceActivity extends ActionBarActivity
                 saveButton.setVisibility(View.VISIBLE);
                 discardButton.setVisibility(View.VISIBLE);
                 chrono.stop();
-                Calendar cal;
-                cal = Calendar.getInstance();
                 duration = sp.getLong("duration", 0);
-                cal.setTimeInMillis(duration);
-                chrono.setText(lessThanTen(cal.get(Calendar.HOUR))
-                        +":"+lessThanTen(cal.get(Calendar.MINUTE))
-                        +":"+lessThanTen(cal.get(Calendar.SECOND)));
+                chrono.setText(millisToChrono(duration));
             }else if(raceStatus==GPSTracker.START_RACE_AVAILABLE){
                 // Si la carrera puede iniciarse...
                 startButton.setBackgroundColor(Color.parseColor("#003366"));
