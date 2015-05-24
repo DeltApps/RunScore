@@ -35,13 +35,19 @@ public class DetailActivity extends ActionBarActivity {
 
         user1.setText(race.getUsername(true));
         time1.setText(millisToChrono(race.getDuration(true)));
-        average_rate_user1.setText(String.valueOf(race.getAvgPace(true))+" min/km");
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(race.getAvgPace(true));
+        average_rate_user1.setText(lessThanTen(cal.get(Calendar.MINUTE))
+                + ":" + lessThanTen(cal.get(Calendar.SECOND))+" min/km");
         score_user1.setText(String.valueOf(race.getScore(true))+" puntos");
 
         if(!race.getUsername(false).isEmpty()) {
             user2.setText(race.getUsername(false));
             time2.setText(millisToChrono(race.getDuration(false)));
-            average_rate_user2.setText(String.valueOf(race.getAvgPace(false))+" min/km");
+            cal = Calendar.getInstance();
+            cal.setTimeInMillis(race.getAvgPace(false));
+            average_rate_user2.setText(lessThanTen(cal.get(Calendar.MINUTE))
+                    + ":" + lessThanTen(cal.get(Calendar.SECOND))+" min/km");
             score_user2.setText(String.valueOf(race.getScore(false))+" puntos");
         }
 
