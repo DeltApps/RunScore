@@ -26,7 +26,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLEncoder;
 
-public class GetInitialConditions extends AsyncTask<Void, Void, Boolean> {
+public class GetInitialConditions extends AsyncTask<Void, Void, Void> {
 
     public InitialConditionsResponse delegate = null;
 
@@ -94,9 +94,8 @@ public class GetInitialConditions extends AsyncTask<Void, Void, Boolean> {
 
     /* hilo */
     @Override
-    protected Boolean doInBackground(Void... params) {
+    protected Void doInBackground(Void... params) {
 
-        boolean result = false;
 //			android.os.Debug.waitForDebugger();
 
         /* Crea/abre el archivo para los datos e inicializa el editor para escribir en el */
@@ -167,7 +166,6 @@ public class GetInitialConditions extends AsyncTask<Void, Void, Boolean> {
                     /* Lee y guarda el tiempo en un archivo XML */
                     jObj = new JSONObject(sb.toString());
                     currently= jObj.getJSONObject("currently");
-                    result = true;
                     // condiciones actuales //
                     try{
                         editor.putLong("time", Long.parseLong(currently.getString("time")));
@@ -200,16 +198,14 @@ public class GetInitialConditions extends AsyncTask<Void, Void, Boolean> {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return result;
-
+        return null;
     }
 
     /* Metodo llamado tras la finalizacion del hilo */
     @Override
-    protected void onPostExecute(Boolean result) {
-        super.onPostExecute(result);
+    protected void onPostExecute(Void param) {
+        super.onPostExecute(param);
 
         delegate.asyncTaskCompleted();
-
     }
 }
