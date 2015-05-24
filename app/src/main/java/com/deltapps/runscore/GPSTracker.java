@@ -253,9 +253,6 @@ public class GPSTracker extends Service implements SharedPreferences.OnSharedPre
                                 Toast.LENGTH_SHORT).show();
                         stopSelf();
                     }
-
-
-
                 }
             }
 

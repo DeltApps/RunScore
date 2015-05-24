@@ -192,7 +192,7 @@ public class RaceActivity extends ActionBarActivity
                     Race race = new Race();
                     race.setMyRaceValues((int) distance, myparse.getCurrentUser(), duration, avgPace,
                             Long.parseLong(GPSPrefs.getString("raceBeganAt", "0")),
-                            GPSPrefs.getString("weather", "0"), GPSPrefs.getFloat("temperature", 999f),
+                            GPSPrefs.getString("weather", "0"), GPSPrefs.getInt("temperature", 999),
                             GPSPrefs.getInt("humidity", 999), score);
 
                     myparse.saveRace(race);
@@ -239,21 +239,23 @@ public class RaceActivity extends ActionBarActivity
     private void printRaceValues() {
         speedTexvView.setText("Vel: "+round(speed,1)+" km/h");
         if (pace > HOUR){
-            paceTextView.setText("Ritmo: - min/km·int");
+            paceTextView.setText("Ritmo: - min/km");
         }else {
             cal = Calendar.getInstance();
             cal.setTimeInMillis(pace);
-            paceTextView.setText(cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND) + " min/km");
+            paceTextView.setText(lessThanTen(cal.get(Calendar.MINUTE))
+                    + ":" + lessThanTen(cal.get(Calendar.SECOND)) + " min/km");
         }
         distanceTextView.setText("Dist: "+round(distance,1)+" km");
         if (avgPace > HOUR){
-            avgPaceTextView.setText("Ritmo med: - min/km");
+            avgPaceTextView.setText("/Ritmo: - min/km");
         }else{
             cal = Calendar.getInstance();
             cal.setTimeInMillis(avgPace);
-            avgPaceTextView.setText("Ritmo med: "+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND)+" min/km");
+            avgPaceTextView.setText("/Ritmo: "+lessThanTen(cal.get(Calendar.MINUTE))
+                    +":"+lessThanTen(cal.get(Calendar.SECOND))+" min/km");
         }
-        altitudeTextView.setText("Alt: "+round((float)altitude,1) + " m");
+        altitudeTextView.setText("Alt: " + round((float) altitude, 1) + " m");
         scoreTextView.setText(score + " puntos");
 
     }
@@ -262,6 +264,13 @@ public class RaceActivity extends ActionBarActivity
         BigDecimal bd = new BigDecimal(Float.toString(d));
         bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
+    }
+
+    private String lessThanTen(int num){
+        if(num<10)
+            return "0"+Integer.toString(num);
+        else
+            return Integer.toString(num);
     }
 
     @Override

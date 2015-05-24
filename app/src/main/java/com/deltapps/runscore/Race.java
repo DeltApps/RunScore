@@ -10,7 +10,7 @@ public class Race {
     long avgPace1 = 0;
     long initialTime1 = 0;
     String initialWeather1 = null;
-    float initialTemp1 = 0;
+    int initialTemp1 = 0;
     int initialHumidity1 = 0;
     long score1 = 0;
     String username2 = null;
@@ -18,12 +18,12 @@ public class Race {
     long avgPace2 = 0;
     long initialTime2 = 0;
     String initialWeather2 = null;
-    float initialTemp2 = 0;
+    int initialTemp2 = 0;
     int initialHumidity2 = 0;
     long score2 = 0;
 
     public void setMyRaceValues(int distance, String username, long duration, long avgPace,
-                                long initialTime, String initialWeather, float initialTemp,
+                                long initialTime, String initialWeather, int initialTemp,
                                 int initialHumidity, long score){
         this.distance = distance;
         this.username1 = username;
@@ -37,10 +37,10 @@ public class Race {
 
     }
     public void setRaceValues(int distance, String username1, long duration1, long avgPace1,
-                              long initialTime1, String initialWeather1, float initialTemp1,
+                              long initialTime1, String initialWeather1, int initialTemp1,
                               int initialHumidity1, long score1, String username2, long duration2,
                               long avgPace2, long initialTime2, String initialWeather2,
-                              float initialTemp2, int initialHumidity2, long score2){
+                              int initialTemp2, int initialHumidity2, long score2){
         this.distance = distance;
         this.username1 = username1;
         this.duration1 = duration1;

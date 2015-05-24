@@ -63,8 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="40sp"
-            android:layout_margin="20dp"
-            android:format="H:MM:SS"/>
+            android:layout_margin="20dp"/>
         <TextView
             android:id="@+id/score"
             android:text="@string/score"
