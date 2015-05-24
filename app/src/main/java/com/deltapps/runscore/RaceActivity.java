@@ -286,9 +286,9 @@ public class RaceActivity extends ActionBarActivity
     }
 
     private String millisToChrono(long duration){
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration);
-        long hours = TimeUnit.MILLISECONDS.toHours(duration);
+        long seconds  = (duration/ 1000) % 60 ;
+        long minutes  = ((duration/ (1000*60)) % 60);
+        long hours   = ((duration/ (1000*60*60)) % 24);
 
         return lessThanTen(hours)+":"+lessThanTen(minutes)+":"+lessThanTen(seconds);
     }
