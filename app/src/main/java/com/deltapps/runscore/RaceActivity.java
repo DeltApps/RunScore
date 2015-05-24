@@ -338,6 +338,7 @@ public class RaceActivity extends ActionBarActivity
             distance = sp.getFloat("distance", 0);
             avgPace = sp.getLong("avgPace", 0);
             altitude = Double.parseDouble(sp.getString("altitude", "0"));
+            score = GPSPrefs.getInt("score", 0);
             printRaceValues();
         }
     }

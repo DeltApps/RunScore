@@ -224,15 +224,15 @@ public class MyParse {
 
                                 long initialTime1;
                                 if(o1.get("username1").equals(user))
-                                    initialTime1 = (long) o1.get("initialTime1");
+                                    initialTime1 = Long.parseLong(o1.get("initialTime1").toString());
                                 else
-                                    initialTime1 = (long) o1.get("initialTime2");
+                                    initialTime1 = Long.parseLong(o1.get("initialTime2").toString());
 
                                 long initialTime2;
-                                if(o1.get("username2").equals(user))
-                                    initialTime2 = (long) o2.get("initialTime1");
+                                if(o1.get("username1").equals(user))
+                                    initialTime2 = Long.parseLong(o2.get("initialTime1").toString());
                                 else
-                                    initialTime2 = (long) o2.get("initialTime2");
+                                    initialTime2 = Long.parseLong(o2.get("initialTime2").toString());
 
 
                                 if (initialTime1 < initialTime2) // si -> o2, o1
