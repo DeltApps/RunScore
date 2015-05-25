@@ -129,19 +129,7 @@ public class MyParse {
                         // Establece acceso R/W restringido
                         final ParseACL acl = new ParseACL();
                         acl.setPublicWriteAccess(false);
-                        acl.setPublicReadAccess(false);
-                        acl.setReadAccess(ParseUser.getCurrentUser(), true);
-                        ParseQuery<ParseUser> query = ParseUser.getQuery();
-                        query.whereEqualTo("username",
-                                objects.get(0).get("username1").toString());
-                        query.findInBackground(new FindCallback<ParseUser>() {
-                            @Override
-                            public void done(List<ParseUser> users, ParseException e) {
-                                if (e == null)
-                                    acl.setReadAccess(users.get(0).getObjectId(), true);
-                            }
-                        });
-
+                        acl.setPublicReadAccess(true);
 
                         // Añade los datos de la carrera al objeto parse
                         objects.get(0).setACL(acl);

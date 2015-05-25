@@ -1,6 +1,5 @@
 package com.deltapps.runscore;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +7,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 
 public class DetailActivity extends ActionBarActivity {

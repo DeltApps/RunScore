@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
-
 
 public class RaceActivity extends ActionBarActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -154,9 +152,10 @@ public class RaceActivity extends ActionBarActivity
     protected void onDestroy() {
         super.onDestroy();
 
-        // Si se cierra la actividad y no hay carrera en marcha, se finaliza el servicio
         if(raceStatus!=GPSTracker.RACE_ON)
             stopService(new Intent(this, GPSTracker.class));
+        else
+            setRaceStatus(GPSTracker.RACE_ABORTED);
 
     }
 
